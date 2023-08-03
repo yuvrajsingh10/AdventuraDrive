@@ -1,0 +1,4 @@
+select{
+    background-color: var(--bg-primary) !important;
+    color: white !important;
+}
