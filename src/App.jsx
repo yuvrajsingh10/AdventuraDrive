@@ -9,6 +9,7 @@ import Bookings from "./pages/Bookings"
 import About from "./pages/About"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
+import MyAccount from "./pages/MyAccount"
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
           <Route path="/bookings" element={<Bookings/>}></Route>
           <Route path="/Login" element={<Login/>}></Route>
           <Route path="/register" element={<Register/>}></Route>
+          <Route path="/my-account" element={<MyAccount/>}></Route>
         </Routes>
         <Footer/>
       </Router>
