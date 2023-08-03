@@ -4,7 +4,9 @@ const Modal = () => {
   return (
     <>
       <div className={classes.backdrop}></div>
-      div.
+      <div className="modal">
+        
+      </div>
     </>
   );
 };

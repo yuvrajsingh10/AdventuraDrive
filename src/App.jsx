@@ -7,6 +7,8 @@ import Cars from "./pages/cars"
 import Footer from "./components/Footer/Footer"
 import Bookings from "./pages/Bookings"
 import About from "./pages/About"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
           <Route path="/About" element={<About/>}></Route>
           <Route path="/cars" element={<Cars/>}></Route>
           <Route path="/bookings" element={<Bookings/>}></Route>
+          <Route path="/Login" element={<Login/>}></Route>
+          <Route path="/register" element={<Register/>}></Route>
         </Routes>
         <Footer/>
       </Router>

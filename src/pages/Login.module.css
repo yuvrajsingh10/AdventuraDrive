@@ -1,0 +1,27 @@
+.container-fluid{
+    height: 35rem;
+    display: flex;
+    align-items: center;
+    /* background-color: aquamarine; */
+    background-image: url('../assets/LoginImg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login-container{
+    display: block;
+    background-color: aqua;
+    height: 22rem;
+    width: 18rem;
+    padding: 20px;
+    border-radius: 0.5rem;
+    margin: auto auto;
+    background-color: white;
+    box-shadow: 0 2px 20px rgb(41, 41, 41);
+    /* justify-content: center; */
+}
+
+.login-container .login-form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}

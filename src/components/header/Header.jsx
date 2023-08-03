@@ -6,6 +6,7 @@ import { BsInstagram, BsYoutube } from "react-icons/bs"
 import { RiFacebookFill } from "react-icons/ri"
 import { FaLinkedinIn, FaCar } from 'react-icons/fa'
 import { NavLink } from "react-router-dom";
+import Button from "../button/Button";
 
 const Header = () => {
     return (
@@ -52,9 +53,13 @@ const Header = () => {
                                             <NavLink className="nav-link mx-2" to={"/about"}>Contact</NavLink>
                                         </li>
                                         <li className="nav-item">
-                                            <NavLink className="nav-link mx-2" to={"/about"}>My Account</NavLink>
+                                            <NavLink className="nav-link mx-2" to={"/my-account"}>My Account</NavLink>
+                                        </li>
+                                        <li className="nav-item">
+                                            <NavLink className="nav-link mx-2" to={"/login"}>Sign in </NavLink>
                                         </li>
                                     </ul>
+                                    <NavLink className="nav-link mx-2" to={"/register"}><Button title="Sign up"/></NavLink>
                                 </div>
 
                             </div>

@@ -23,11 +23,12 @@
   --bg-dark: #111111;
   --bg-light-dark: #252525;
   --bg-primary: #646cff;
-  --font-light-color: #727272;
+  --font-light-color: #414141;
 }
 
 body{
   height: max-content;
+  color:var(--font-light-color)
 }
 
 /* ======================= Common Classes============================= */
@@ -46,6 +47,7 @@ h2 {
 }
 h5,h4,h3,h6{
   font-family: var(--title-fonts);
+  /* color: var(--bg-light-dark); */
 }
 
 ul {
@@ -58,6 +60,7 @@ p {
   margin: 0;
   padding: 0;
   font-family: var(--para-fonts);
+  font-weight: 500;
 }
 
 .light-text {
