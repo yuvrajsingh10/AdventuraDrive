@@ -7,17 +7,20 @@ import {SlCalender} from "react-icons/sl"
 import {FaUser,FaSignOutAlt} from 'react-icons/fa'
 import {BsFillCarFrontFill,BsCalendarX} from 'react-icons/bs'
 import {ImPriceTags} from 'react-icons/im'
+import DashboardOrderList from "../components/DashboardOrderList";
+import FavoriteCars from "../components/FavoriteCars";
+import MyProfile from "../components/MyProfile";
 
 const MyAccount = () => {
   return (
     <>
       <SubheaderWrapper heading="DashBoard" img={DashboardImg} />;
-        <div className="container">
+        <div className={`container ${classes.container} mb-2`}>
           <div className={`${classes['dashboard-container']} row`}>
             <div className={classes['dashboard-right-pane']}>
-              <div className={`${classes['profile-images']} text-center mb-1 mx-auto`}>
+              <div className={` text-center mb-1 mx-auto`}>
                 <img src="https://www.madebydesignesia.com/themes/rentaly/images/profile/1.jpg" alt="Profile" />
-                <h3>Monica Lucas </h3>
+                <h5>Monica Lucas </h5>
                 <p>monica@rentaly.com</p>
               </div>
               <div className={`${classes['dashboard-buttons']}`} >
@@ -30,8 +33,8 @@ const MyAccount = () => {
                 </ul>
               </div>
             </div>
-            <div className={`${classes['dashboard-left-pane']} col-md-9`}>
-              <div className="row">
+            <div className={`${classes['dashboard-left-pane']} col-md-9 d-flex flex-column `}>
+              <div className="row text-center">
                 <div className="col-md-3">
                   <BiCalendar/>
                   <h2>03</h2>
@@ -52,6 +55,13 @@ const MyAccount = () => {
                   <h2>24</h2>
                   <p>Cancel Orders</p>
                 </div>
+              </div>
+              <div className="row my-md-4 justify-content-center">
+                <DashboardOrderList title={"My Recent Orders"}/>
+                {/* <FavoriteCars/>
+                <FavoriteCars/>
+                <FavoriteCars/> */}
+                {/* <MyProfile/> */}
               </div>
             </div>
           </div>
