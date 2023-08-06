@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./MyAccount.module.css"
 import SubheaderWrapper from "../UI/SubheaderWrapper";
 import DashboardImg from "../assets/DashboardImg.jpg";
@@ -12,6 +12,17 @@ import FavoriteCars from "../components/FavoriteCars";
 import MyProfile from "../components/MyProfile";
 
 const MyAccount = () => {
+  const {isSelected ,setIsSelected}=useState({
+    dashboard:true,
+    myProfile:false,
+    myOrders:false,
+    favoriteCar:false,
+  })
+
+  const clickHandler=()=>{
+
+  }
+  
   return (
     <>
       <SubheaderWrapper heading="DashBoard" img={DashboardImg} />;
