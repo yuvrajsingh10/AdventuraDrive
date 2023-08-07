@@ -1,22 +1,21 @@
 import React from "react";
-import "./bookings.css";
-import SubheaderWrapper from "../UI/SubheaderWrapper";
-import Wrapper from "../UI/Wrapper";
-import CustomInput from "../components/customInput/CustomInput";
-import Button from "../components/button/Button";
-import TimeInput from "../UI/TimeInput";
-import FeatureCard from "../UI/FeatureCard";
-import { FiCalendar, FiSmile } from "react-icons/fi";
+import classes from "./bookings.module.css";
+import Wrapper from "../../UI/Wrapper";
+import CustomInput from "../../components/customInput/CustomInput";
+import Button from "../../components/button/Button";
+import TimeInput from "../../UI/TimeInput";
+import FeatureCard from "../../UI/FeatureCard";
+import { FiCalendar } from "react-icons/fi";
 import { AiFillCar, AiOutlineEdit } from "react-icons/ai";
 import { FaRegSmile } from "react-icons/fa";
 
-import minibus from "../assets/minibus.png";
-import sportscar from "../assets/sportscar.png";
-import van from "../assets/van.png";
-import car from "../assets/car.png";
-import bookingFeatured from "../assets/bookingFeatured.jpg"
-import OfferValue from "../components/OfferValue/OfferValue";
-
+import minibus from "../../assets/minibus.png";
+import sportscar from "../../assets/sportscar.png";
+import van from "../../assets/van.png";
+import car from "../../assets/car.png";
+import bookingFeatured from "../../assets/bookingFeatured.jpg";
+import OfferValue from "../../components/OfferValue/OfferValue";
+import SubheaderWrapper from "../../UI/SubheaderWrapper";
 
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
@@ -29,14 +28,14 @@ const Bookings = () => {
   return (
     <>
       <SubheaderWrapper heading={"Booking"} img={img}>
-        <Wrapper className="container booking__section px-5 py-4">
+        <Wrapper className={`container ${classes["booking-section"]} px-5 py-4`}        >
           <form onSubmit={submitHandler}>
             <div className="row">
               <div className="col-md-6">
                 <h6>What is your vehicle type?</h6>
-                <div className="select__car">
-                  <div className="row selectCar_Form">
-                    <div className="radio-img col-lg-3 col-sm-3 col-6">
+                <div className={classes["select-car"]}>
+                  <div className={`row ${classes["selectCar-Form"]}`}>
+                    <div className=" col-lg-3 col-sm-3 col-6">
                       <input
                         id="radio-1a"
                         name="Car_Type"
@@ -49,7 +48,7 @@ const Bookings = () => {
                         Car
                       </label>
                     </div>
-                    <div className="radio-img col-lg-3 col-sm-3 col-6">
+                    <div className={`col-lg-3 col-sm-3 col-6`}>
                       <input
                         id="radio-1b"
                         name="Car_Type"
@@ -62,7 +61,7 @@ const Bookings = () => {
                       </label>
                     </div>
 
-                    <div className="radio-img col-lg-3 col-sm-3 col-6">
+                    <div className={`col-lg-3 col-sm-3 col-6`}>
                       <input
                         id="radio-1c"
                         name="Car_Type"
@@ -75,7 +74,7 @@ const Bookings = () => {
                       </label>
                     </div>
 
-                    <div className="radio-img col-lg-3 col-sm-3 col-6">
+                    <div className={`col-lg-3 col-sm-3 col-6`}>
                       <input
                         id="radio-1d"
                         name="Car_Type"
@@ -134,11 +133,13 @@ const Bookings = () => {
                 </div>
               </div>
             </div>
-            <Button title={"Find a Vehicle"} type={"submit"} />
+            <div>
+              <Button title={"Find a Vehicle"} type={"submit"} />
+            </div>
           </form>
         </Wrapper>
       </SubheaderWrapper>
-      <div className="space-single"></div>
+      <div className={classes["space-single"]}></div>
       <section>
         <div className="container">
           <div className="row justify-content-evenly">
@@ -174,9 +175,11 @@ const Bookings = () => {
         </div>
       </section>
       <section>
-        <div className="container-fluid  mt-sm-5 p-0 offer-container">
-          <img  src={bookingFeatured} alt="" />
-          <OfferValue/> 
+        <div
+          className={`container-fluid  mt-sm-5 p-0 ${classes["offer-container"]}`}
+        >
+          <img src={bookingFeatured} alt="" />
+          <OfferValue classes={classes} />
         </div>
       </section>
     </>

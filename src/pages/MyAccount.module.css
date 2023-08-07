@@ -50,6 +50,7 @@
     font-weight: 500;
     border-radius: 0.4rem;
     transition: 0.1s linear;
+    cursor: pointer;
 }
 
 .active {

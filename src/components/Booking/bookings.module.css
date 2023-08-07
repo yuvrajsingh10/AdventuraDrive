@@ -1,10 +1,10 @@
 
-.select__car{
+.select-car{
     display: flex;
     height: 100%;
 }
 
-.booking__section{
+.booking-section{
     position: absolute; 
     top: 70%;
     left: 50%;
@@ -12,7 +12,7 @@
     margin: 0 auto;
     height: 17.5rem;
 }
-.selectCar_Form{
+.selectCar-Form{
     display: flex;
     justify-content: space-evenly;
 }
@@ -21,12 +21,12 @@
 }
 
 
-.select__car input[type='radio']{
+.select-car input[type='radio']{
     opacity: 0;
     position:fixed;
     width: 0;
 }
-.selectCar_Form  label {
+.selectCar-Form  label {
     display: inline-block;
     background-color:#a5a9ff;
     color: white;
@@ -38,24 +38,22 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.selectCar_Form  label img{
+.selectCar-Form  label img{
     width: 100%;
     object-fit: cover;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    transition: 0.1s linear;
 }
-.selectCar_Form input[type="radio"]:checked + label {
+.selectCar-Form input[type="radio"]:checked + label {
     background-color:var(--bg-primary);
-    /* border-color: #4c4; */
+    transition: 0.5s linear;
+  
 }
-button{
+.booking-section button{
     float: right;
     margin: 5px ;
 }
-.input_group{
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-}
+
 
 .space-single{
     margin: 20rem;
@@ -63,7 +61,7 @@ button{
 
 .feature-container{
     position: relative;
-    box-shadow: 2px 2px 10px rgb(233, 233, 233);
+    box-shadow: 0px 2px 10px rgb(233, 233, 233);
     height: 22rem;
     overflow: hidden;
     

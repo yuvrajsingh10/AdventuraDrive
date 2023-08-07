@@ -2,7 +2,7 @@ import React from 'react'
 
 const OfferValue = (props) => {
   return (
-    <div className={`offer-info container`}>
+    <div className={`${props.classes['offer-info']} container`}>
             <div className="row">
               <div className="col-md-6 col-lg-6 col-sm-12">
                 <h2>
