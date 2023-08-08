@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import classes from "./MyAccount.module.css";
-import SubheaderWrapper from "../UI/SubheaderWrapper";
-import DashboardImg from "../assets/DashboardImg.jpg";
+import SubheaderWrapper from "../../UI/SubheaderWrapper";
 import { BiHomeAlt2, BiCalendar } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { BsFillCarFrontFill, BsCalendarX } from "react-icons/bs";
 import { ImPriceTags } from "react-icons/im";
-import DashboardOrderList from "../components/DashboardOrderList";
-import FavoriteCars from "../components/FavoriteCars";
-import MyProfile from "../components/MyProfile";
-import MyOrders from "../components/MyOrders";
+import DashboardOrderList from "./DashboardOrderList";
+import FavoriteCars from "./FavoriteCars";
+import MyProfile from "./MyProfile";
+import MyOrders from "./MyOrders";
+import DashboardImg from "../..//assets/DashboardImg.jpg";
 
 const MyAccount = () => {
   const initialSelect = {

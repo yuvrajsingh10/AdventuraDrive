@@ -9,7 +9,7 @@ import Bookings from "./components/Booking/Bookings"
 import About from "./components/About/About"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
-import MyAccount from "./pages/MyAccount"
+import MyAccount from "./components/Dashboard/MyAccount"
 
 
 function App() {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Wrapper from '../UI/Wrapper';
-import Button from "./button/Button";
+import Wrapper from '../../UI/Wrapper';
+import Button from "../button/Button";
 import classes from "./FavoriteCar.module.css";
 const FavoriteCars = () => {
   return (

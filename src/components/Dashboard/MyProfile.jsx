@@ -1,7 +1,7 @@
 import React from "react";
-import CustomInput from "./customInput/CustomInput";
+import CustomInput from "../customInput/CustomInput";
 import classes from "./MyProfile.module.css";
-import Button from "./button/Button";
+import Button from "../button/Button";
 const MyProfile = () => {
   return (
     <>
