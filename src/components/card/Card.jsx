@@ -13,7 +13,7 @@ const Card = (props) => {
                 <div className="card-header p-2">
                     <img src="https://www.madebydesignesia.com/themes/rentaly/images/cars/jeep-renegade.jpg" className="card-img-top rounded" alt="..." />
                 </div>
-                <div className="card-body">
+                <div className="card-body px-3">
                     <div className="d-flex justify-content-between align-items-center">
                         <h5 className="card-title">Jeep Compass</h5>
                         <span><AiOutlineHeart />58</span>
@@ -24,7 +24,7 @@ const Card = (props) => {
                         <AiOutlineCar className="fs-5" /><span className="card-text mx-1 "><strong>Suv</strong></span>
                     </div>
                 </div>
-                <div className="card-footer">
+                <div className="card-footer px-3">
 
                     <div className="d-flex justify-content-between align-items-center">
                         <div>

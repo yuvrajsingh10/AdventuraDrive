@@ -1,6 +1,6 @@
 .info_image-container{
     height: 500px;
-    background-color: #eeeeee7c;
+    background-color: #d6d6d67c;
 }
 .info_image-container>.img{
     background-image: url("../../assets/fabian-albert-KqpoiWI4-00-unsplash.jpg");
@@ -21,7 +21,7 @@
     position: relative;
 }
 .type_image-btn input{
-    opacity: 0.011;
+    opacity: 0;
     z-index: 100;
     
 }
@@ -30,7 +30,7 @@
     font-weight: 200;
     font-size: 14px;
     color: rgb(8, 8, 8);
-    background-color: #eee ;
+    background-color: #d8d8d8 ;
     padding: 5px 15px;
     
 }
@@ -40,7 +40,9 @@
   cursor: pointer;
 }
 
-input[type="radio"]:checked + .type_image-btn  label {
-    background-color: red !important;
+input[type="radio"]:checked + label{
+    background-color: var(--bg-primary) !important;
+    border: 1px solid var(--bg-primary);
+    color: aqua;
     border-radius: 4px;
 }

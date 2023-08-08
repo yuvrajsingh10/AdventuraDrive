@@ -17,6 +17,7 @@ import picBlog1 from "../../assets/pic-blog-1.jpg";
 import picBlog2 from "../../assets/pic-blog-2.jpg";
 import picBlog3 from "../../assets/pic-blog-3.jpg";
 import HeroInfo from "./HeroInfo";
+import Heading from "../Heading/Heading";
 
 const Home = () => {
   return (
@@ -55,18 +56,13 @@ const Home = () => {
       </section>
       <section className="Info ">
         <div className="container">
-          <div className="row text-center my-5 mx-0">
-            <div className="col-md-6 mx-auto">
-              <h1>Our Vehicle Fleet</h1>
-              <p className="light-text">
-                Sit labore et officia eiusmod tempor officia eiusmod dolor
-                exercitation nulla dolore ut id velit et ut anim.
-              </p>
-            </div>
-            <CarouselContainer />
-          </div>
+          <Heading
+            heading="Our Vehicle Fleet"
+            subheading="Sit labore et officia eiusmod tempor officia eiusmod dolor
+                exercitation nulla dolore ut id velit et ut anim."
+          />
+          <CarouselContainer />
         </div>
-
         <InfoCont />
         <div className="container explore_container my-5">
           <div className="row explore_info h-100">
@@ -133,15 +129,11 @@ const Home = () => {
       </section>
 
       <section className="latest_news_container">
-        <div className="row text-center my-5 mx-0">
-          <div className="col-md-6 mx-auto">
-            <h2>Latest News </h2>
-            <p className="light-text">
-              Breaking news, fresh perspectives, and in-depth coverage - stay
-              ahead with our latest news, insights, and analysis.
-            </p>
-          </div>
-        </div>
+        <Heading
+          heading="Latest News "
+          subheading="Breaking news, fresh perspectives, and in-depth coverage - stay ahead
+          with our latest news, insights, and analysis."
+        />
         <div className="container">
           <div className="row my-3">
             <NewsCard

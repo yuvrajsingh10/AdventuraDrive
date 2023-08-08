@@ -1,38 +1,33 @@
 import React, { useState } from "react";
-import classes from "./InfoCont.module.css"
+import classes from "./InfoCont.module.css";
 
 const InfoCont = () => {
-    const [isType, setIstype] = useState({ isLuxury: true, isComfort: false })
-    console.log(isType)
+  const [isType, setIstype] = useState({ isLuxury: true, isComfort: false });
   return (
-    <div className={`row ${classes['info_image-container']} mx-0`}>
+    <div className={`row ${classes["info_image-container"]} mx-0`}>
       <div className={`col-md-6 ${classes.img}`}></div>
       <div className="col-md-5 my-auto px-5">
         <h2 className="my-4 ms-5">Only Quality For Clients</h2>
         <div className="d-flex px-5">
-          <div className={classes['type_image-btn']}>
-            <label htmlFor="luxury">
-              LUXURY
-            </label>
+          <div className={classes["type_image-btn"]}>
+            <label htmlFor="luxury">LUXURY</label>
             <input
               type="radio"
               id="luxury"
               name="type"
-              onClick={() => {
+              onChange={() => {
                 setIstype({ isLuxury: true, isComfort: false });
               }}
               defaultChecked
             />
           </div>
-          <div className={classes['type_image-btn']}>
-            <label htmlFor="comfort">
-              COMFORT
-            </label>
+          <div className={classes["type_image-btn"]}>
+            <label htmlFor="comfort">COMFORT</label>
             <input
               type="radio"
               id="comfort"
               name="type"
-              onClick={() => {
+              onChange={() => {
                 setIstype({ isLuxury: false, isComfort: true });
               }}
             />
