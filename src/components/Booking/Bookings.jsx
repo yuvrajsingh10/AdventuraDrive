@@ -3,7 +3,7 @@ import classes from "./bookings.module.css";
 import Wrapper from "../../UI/Wrapper";
 import CustomInput from "../../components/customInput/CustomInput";
 import Button from "../../components/button/Button";
-import TimeInput from "../../UI/TimeInput";
+import TimeInput from "./TimeInput";
 import FeatureCard from "../../UI/FeatureCard";
 import { FiCalendar } from "react-icons/fi";
 import { AiFillCar, AiOutlineEdit } from "react-icons/ai";

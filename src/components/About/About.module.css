@@ -14,3 +14,9 @@
 .about-Offer_value img{
     object-fit:contain;
 }
+
+.about_feature-higlight >div>div{
+    padding: 20px;
+    height: 250px;
+    
+}

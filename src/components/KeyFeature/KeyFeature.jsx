@@ -1,18 +1,15 @@
 import React from "react";
 
 const KeyFeature = (props) => {
+  const classes =props.className
   return (
     <>
-      <div className="my-3">
-        <div>
-          <h2>
-            <span className="svg_icons my-2">{props.icon}</span>
+      <div className={`${classes}`}>
+          <h2 className="mb-4">
+            <span className="svg_icons my-4">{props.icon}</span>
           </h2>
-        </div>
         <h5 className="my-2">{props.title}</h5>
-        <p className="light-text">
-          {props.desc}
-        </p>
+        <p className="light-text">{props.desc}</p>
       </div>
     </>
   );

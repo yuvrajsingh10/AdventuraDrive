@@ -1,6 +1,6 @@
 import React from "react";
 import "./cars.css"
-import Card from "../components/card/Card"
+import Card from "../card/Card"
 // import Footer from "../components/"
 
 const Cars = () => {

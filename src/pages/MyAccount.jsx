@@ -89,9 +89,7 @@ const MyAccount = () => {
               </ul>
             </div>
           </div>
-          <div
-            className={`${classes["dashboard-left-pane"]} col-md-9 d-flex flex-column `}
-          >
+          <div className={`${classes["dashboard-left-pane"]} col-md-9 d-flex flex-column `}>
             {selectButton.dashboard && (
               <div className="row text-center">
                 <div className="col-md-3">
