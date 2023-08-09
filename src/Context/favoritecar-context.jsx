@@ -7,16 +7,17 @@ export const  FavoriteCarContext = React.createContext({
   removeFavoriteCar:()=>{}
 })
 
-const initValue ={
+const initValue ={  
   favCar:[],
   totalQuantity:0,
 } 
 
 const FavCarReducer=(state,action)=>{
+  const favCar=[]
   if(action.type==="ADD_FAVORITE_CAR"){
-    console.log(state);
+    favCar
   }
-  return state;
+  return ;
 }
 
 export default function FavoriteCarProvider (props){

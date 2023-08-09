@@ -15,7 +15,8 @@ import { useEffect, useState } from "react";
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    console.log("asds");
+    fetchData();
+
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
