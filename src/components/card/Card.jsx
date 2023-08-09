@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlineUser, AiOutlineCar, AiOutlineHeart } from 'react-icons/ai'
 import { SlBriefcase } from "react-icons/sl"
 import { NavLink } from "react-router-dom";
 import "./card.css"
 import Button from "../button/Button"
+import { FavoriteCarContext } from "../../Context/favoritecar-context";
+
 
 const Card = (props) => {
+    const fav_ctx = useContext(FavoriteCarContext);
     const { title, desctiption, price ,i_class } = props
     return (
         <>
@@ -16,7 +19,7 @@ const Card = (props) => {
                 <div className="card-body px-3">
                     <div className="d-flex justify-content-between align-items-center">
                         <h5 className="card-title">Jeep Compass</h5>
-                        <span><AiOutlineHeart />58</span>
+                        <span><AiOutlineHeart onClick={()=>{fav_ctx.add('wwje')}} />58</span>
                     </div>
                     <div className="d-flex  align-items-center">
                         <AiOutlineUser className="fs-5" /><span className="card-text mx-1 "><strong>5</strong></span>
@@ -25,7 +28,6 @@ const Card = (props) => {
                     </div>
                 </div>
                 <div className="card-footer px-3">
-
                     <div className="d-flex justify-content-between align-items-center">
                         <div>
                             <p>Daily rate from</p>
