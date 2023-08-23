@@ -1,0 +1,75 @@
+.hero_container,
+.hero_section {
+    height: 580px;
+
+}
+
+.hero_section {
+    background-image:linear-gradient(to bottom ,#06252e38,#06252e7c), url('../../assets/6.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+.hero_Section_title {
+    width: 50%;
+    margin: 0 150px;
+}
+
+.hero_title {
+    color: #fff;
+    font-size: 52px;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+    line-height: 52px;
+    font-weight: 500;
+}
+.hero_subtitle{
+    color: #fff;
+    font-size: 18px;
+}
+.spacer-double {
+    width: 100%;
+    height: 60px;
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    clear: both;
+}
+
+.spacer-10 {
+    width: 100%;
+    height: 10px;
+    display: block;
+    clear: both;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+/* ====================Body Section =============================== */
+
+
+
+/* =========================== Explore Container====================================== */
+
+.explore_container{
+    height: 300px;
+    padding: 20px 15px;
+}
+.explore_container h5{
+    margin-top: 25px;
+}
+
+/* =========================== Testimonial cards =====================================*/
+.testimonial{
+    height: 530px;
+    margin: 10px;
+}
+
+/* ==================================================================== HOME NEW INFO AREA =============================================================== */
+
+.latest_news_container{
+    height: 650px;
+    /* margin-bottom: 200px; */
+}

@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root {
+  /* font-family: 'Inter', sans-serif; */
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --title-fonts:'Outfit', sans-serif;
+  --para-fonts:'Inter', sans-serif;
+
+  --color-light:#fbfbfb;
+
+  --bg-dark: #111111;
+  --bg-light-dark: #252525;
+  --bg-primary: #646cff;
+  --font-light-color: #414141;
+}
+
+body{
+  height: max-content;
+  color:var(--font-light-color)
+}
+
+/* ======================= Common Classes============================= */
+h1 {
+  font-size: 52px;
+  font-family: var(--title-fonts);
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 42px;
+  letter-spacing: -1.8px;
+  line-height: 50px;
+  font-family: var(--title-fonts);
+}
+h5,h4,h3,h6{
+  font-family: var(--title-fonts);
+  /* color: var(--bg-light-dark); */
+}
+
+ul {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+*,
+p {
+  margin: 0;
+  padding: 0;
+  font-family: var(--para-fonts);
+  font-weight: 500;
+}
+
+.light-text {
+  color: var(--font-light-color);
+}
+
+.svg_icons {
+  display: inline;
+  padding: 8px 12px;
+  background-color: var(--bg-primary);
+  color: white;
+  border-radius: 0.5rem;
+}
+
+.primary_color{
+  color:var(--bg-primary);
+}
+.primary_color_background{
+  background-color: var(--bg-primary);
+}

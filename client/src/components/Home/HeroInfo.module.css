@@ -1,0 +1,13 @@
+.hero-info>div>p{
+    color: var(--bg-primary);
+    font-size: 19px;
+}
+.hero-info{
+    color: #ffff;
+    display: flex;
+
+}
+.hero-info > span{
+    background-color: var(--bg-primary);
+    border-radius: .5rem;
+}
