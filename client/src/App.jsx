@@ -1,4 +1,5 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
@@ -11,12 +12,11 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyAccount from "./components/Dashboard/MyAccount";
 import { useEffect, useState } from "react";
-import Payment from "./pages/Payment";
+// import Payment from "./pages/Payment";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-  
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
@@ -24,7 +24,14 @@ function App() {
 
   return (
     <>
-      {/* {!isLoading && (
+      {isLoading && (
+        <>
+          <div className="container w-50 h-50 mx-auto text-center">
+            <h3>loading...</h3>
+          </div>
+        </>
+      )}
+      {!isLoading && (
         <Router>
           <Header />
           <Routes>
@@ -38,8 +45,7 @@ function App() {
           </Routes>
           <Footer />
         </Router>
-      )} */}
-      <Payment/>
+      )}
     </>
   );
 }

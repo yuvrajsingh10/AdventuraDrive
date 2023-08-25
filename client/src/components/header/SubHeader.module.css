@@ -1,0 +1,17 @@
+.sub-header_section{
+    color: gray;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.social-links{
+    color: gray;
+}
+.sub-menu{
+    z-index: 50;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center !important;
+
+}

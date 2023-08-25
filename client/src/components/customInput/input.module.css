@@ -7,3 +7,9 @@
   margin: 8px 0;
   border: 1px solid rgb(173, 173, 173);
 }
+.error{
+  font-size: 12px;
+  color: red;
+  margin-bottom: 5px;
+  margin-top: 1px;
+}

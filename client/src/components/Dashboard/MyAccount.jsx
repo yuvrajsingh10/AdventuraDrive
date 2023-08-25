@@ -83,9 +83,6 @@ const MyAccount = () => {
                 >
                   <BsFillCarFrontFill /> My Favorite Cars
                 </li>
-                <li>
-                  <FaSignOutAlt /> Sign Out
-                </li>
               </ul>
             </div>
           </div>

@@ -25,7 +25,11 @@
   --bg-primary: #646cff;
   --font-light-color: #414141;
 }
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body{
   height: max-content;
   color:var(--font-light-color)

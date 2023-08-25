@@ -1,0 +1,24 @@
+.header-section {
+    background-color: var(--bg-dark);
+    z-index: 50;
+}
+
+.brand-logo{
+    color: rgb(250, 250, 250);
+}
+
+
+.menu-bar{
+    position: absolute;
+    width:95%;
+    margin: 0 auto;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 9;
+    color: white ;
+}
+.menu-bar *{
+    color: #fff;
+    font-family: var(--title-fonts) !important;
+}
