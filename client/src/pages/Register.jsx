@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import SubheaderWrapper from "../UI/SubheaderWrapper";
 import classes from "./Register.module.css";
 import CustomInput from "../components/customInput/CustomInput";
 import Button from "../components/button/Button";
 import { useFormik } from "formik";
-import * as Yup from 'yup'
-
+import * as Yup from "yup";
+import { AuthContext } from "../Context/auth-context";
+import {toast} from 'react-toastify'
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
 
@@ -13,37 +14,32 @@ const initialValues = {
   name: "",
   email: "",
   phone: "",
-  age:'',
+  age: "",
   password: "",
-  confirmPassword:""
+  confirmPassword: "",
 };
 
 const SignupSchema = Yup.object().shape({
-  name:Yup.string()
-  .min(2,"Too Short")
-  .max(50,"Too Long")
-  .required('Required'),
-  email:Yup.string()
-  .email('Invalid Email')
-  .required('Required'),
-  password:Yup.string()
-  .min(8,"Too Short Password")
-  .max(16,"Too Long Password "),
-  age:Yup.number()
-  .required('Required')
-  .positive()
-  .integer(),
-  phone:Yup.number()
-  .required('Required')
-  .min(10,"Too Short")
-  .max(10,"Too Long"),
-})
+  name: Yup.string()
+    .min(2, "Too Short")
+    .max(50, "Too Long")
+    .required("Required"),
+  email: Yup.string().email("Invalid Email").required("Required"),
+  password: Yup.string()
+    .min(8, "Too Short Password")
+    .max(16, "Too Long Password ")
+    .required("Required"),
+  age: Yup.number().required("Required").positive().integer(),
+  phone: Yup.number().required("Required").min(1000000000, "Too Short"),
+});
+
 const Register = () => {
+  const user_ctx = useContext(AuthContext);
   const formik = useFormik({
     initialValues,
-    validationSchema:SignupSchema,
+    validationSchema: SignupSchema,
     onSubmit: (values) => {
-      console.log(values);
+      user_ctx.signUp(values);
     },
   });
   return (
@@ -69,8 +65,11 @@ const Register = () => {
                     type: "text",
                     id: "name",
                     name: "name",
-                    onChange:formik.handleChange ,value:formik.values.name
+                    onChange: formik.handleChange('name'),
+                    onBlur:formik.handleBlur('name'),
+                    value: formik.values.name,
                   }}
+                  touched={formik.touched.name}
                   error={formik.errors.name}
                 />
                 <CustomInput
@@ -78,36 +77,53 @@ const Register = () => {
                     label: "Email",
                     type: "email",
                     id: "email",
-                    name: "email", 
-                    onChange:formik.handleChange ,value:formik.values.email
+                    name: "email",
+                    onChange: formik.handleChange('email'),
+                    onBlur:formik.handleBlur('email'),
+                    value: formik.values.email,
                   }}
+                  touched={formik.touched.email}
                   error={formik.errors.email}
-                  />
+                />
                 <CustomInput
                   Attr={{
                     label: "Password",
                     type: "password",
                     id: "password",
                     name: "password",
-                    onChange:formik.handleChange ,value:formik.values.password
+                    onChange: formik.handleChange('password'),
+                    onBlur:formik.handleBlur('password'),
+                    value: formik.values.password,
                   }}
+                  touched={formik.touched.password}
                   error={formik.errors.password}
                 />
               </div>
               <div className="col-md-6 ">
                 <CustomInput
-                  Attr={{ label: "Age", id: "age", type: "text", name: "age" ,onChange:formik.handleChange ,value:formik.values.age }}
+                  Attr={{
+                    label: "Age",
+                    id: "age",
+                    type: "text",
+                    name: "age",
+                    onChange: formik.handleChange('age'),
+                    onBlur:formik.handleBlur('age'),
+                    value: formik.values.age,
+                  }}
+                  touched={formik.touched.age}
                   error={formik.errors.age}
                 />
                 <CustomInput
                   Attr={{
                     label: "Phone",
                     id: "phone",
-                    type: "text",
+                    type: "number",
                     name: "phone",
-                    onChange:formik.handleChange ,
-                    value:formik.values.phone
+                    onChange: formik.handleChange('phone'),
+                    onBlur:formik.handleBlur('phone'),
+                    value: formik.values.phone,
                   }}
+                  touched={formik.touched.phone}
                   error={formik.errors.phone}
                 />
                 <CustomInput
@@ -115,12 +131,14 @@ const Register = () => {
                     label: "Confirm Password",
                     name: "confirmPassword",
                     type: "password",
-                    id: "confirmPassword", 
-                    onChange:formik.handleChange ,value:formik.values.confirmPassword
+                    id: "confirmPassword",
+                    onChange: formik.handleChange('confirmPassword'),
+                    onBlur:formik.handleBlur('confirmPassword'),
+                    value: formik.values.confirmPassword,
                   }}
+                  touched={formik.touched.confirmPassword}
                   error={formik.errors.confirmPassword}
                 />
-                satya prem ki kahani
               </div>
             </div>
             <div className="d-inline">
@@ -134,3 +152,4 @@ const Register = () => {
 };
 
 export default Register;
+// satya prem ki kahani

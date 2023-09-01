@@ -11,7 +11,7 @@ const CustomInput = (props) => {
         placeholder={props.Attr.label}
         {...props.Attr}
       />
-      {props.error && <p className={classes.error}>{props.error}</p>}
+       <p className={classes.error}>{props.touched && props.error }</p>
     </>
   );
 };

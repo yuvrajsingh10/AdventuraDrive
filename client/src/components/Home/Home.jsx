@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoTrophySharp } from "react-icons/io5";
 import { FaRoad } from "react-icons/fa";
 import { MdLocationPin } from "react-icons/md";
@@ -20,6 +20,7 @@ import HeroInfo from "./HeroInfo";
 import Heading from "../Heading/Heading";
 
 const Home = () => {
+  
   return (
     <>
       <section className="container-fluid hero_container">

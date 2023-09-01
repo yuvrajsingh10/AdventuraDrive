@@ -3,14 +3,15 @@ import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import { NavLink } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/auth-context";
 
 export default function AccountMenu(props) {
+  const user_ctx = useContext(AuthContext);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -18,6 +19,10 @@ export default function AccountMenu(props) {
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const logout = async () => {
+    user_ctx.logout()
+    // window.location.reload();
   };
   return (
     <React.Fragment>
@@ -77,9 +82,9 @@ export default function AccountMenu(props) {
         </MenuItem>
 
         <MenuItem onClick={handleClose}>
-          <NavLink className="nav-link mx-2" to={"/my-account"}>
+          <div className="text-center" onClick={logout}>
             <FaSignOutAlt /> Sign Out
-          </NavLink>
+          </div>
         </MenuItem>
       </Menu>
     </React.Fragment>

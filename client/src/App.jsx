@@ -1,5 +1,5 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
-import '../node_modules/bootstrap/dist/js/bootstrap.bundle'
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/Header";
@@ -11,11 +11,22 @@ import About from "./components/About/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyAccount from "./components/Dashboard/MyAccount";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ToastContainer } from "react-toastify";
+import { useCookies } from "react-cookie";
+import { AuthContext } from "./Context/auth-context";
 // import Payment from "./pages/Payment";
 
 function App() {
+  const user_ctx = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
+
+  const [cookie,setCookie]= useCookies(['refreshToken'])
+  useEffect(()=>{
+    setCookie('refreshToken',localStorage.getItem('token')?localStorage.getItem('token'):'')
+  },[cookie])
+
+
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
@@ -44,6 +55,17 @@ function App() {
             <Route path="/my-account" element={<MyAccount />}></Route>
           </Routes>
           <Footer />
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Router>
       )}
     </>

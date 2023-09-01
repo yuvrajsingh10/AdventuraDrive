@@ -16,8 +16,6 @@ import car from "../../assets/car.png";
 import bookingFeatured from "../../assets/bookingFeatured.jpg";
 import OfferValue from "../../components/OfferValue/OfferValue";
 import SubheaderWrapper from "../../UI/SubheaderWrapper";
-import axios from 'axios'
-
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
 const Bookings = () => {
@@ -44,33 +42,23 @@ const Bookings = () => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(bookingDetails)
-    const config = {
-      headers: { Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6eyJpZCI6IjY0ZDRlZjVjZjMyMTNiZDJkNTRmMDhlYiJ9LCJpYXQiOjE2OTE5MTk3MjAsImV4cCI6MTY5MjE3ODkyMH0.xMEn_I0VyFwEjzeIOMHtaxtSaESjwoOvv1xAkIYKzwI` },
-    };
-    const response = await axios.post(
-      "https://panorbit.in/api/users.json",
-      // "//localhost:3000/api/user/booking",
-      bookingDetails,
-      config
-    );
-    console.log(response)
   };
 
-  // useEffect(()=>{
-  //   const timeout=setTimeout(() => {
+  function fetch() {
+    
+  }
 
-  //   }, 500);
-  //   return ()=>{
-  //     clearInterval(timeout);
-  //   }
-  // },[])
+  useEffect(() => {
+    const timeout = setTimeout(() => {}, 500);
+    return () => {
+      clearInterval(timeout);
+    };
+  }, []);
+  
   return (
     <>
       <SubheaderWrapper heading={"Booking"} img={img}>
-        <Wrapper
-          className={`container ${classes["booking-section"]} px-5 py-4`}
-        >
+        <Wrapper className={`container ${classes["booking-section"]} px-5 py-4`}>
           <form onSubmit={submitHandler}>
             <div className="row">
               <div className="col-md-6">
