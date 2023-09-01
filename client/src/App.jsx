@@ -26,7 +26,6 @@ function App() {
     setCookie('refreshToken',localStorage.getItem('token')?localStorage.getItem('token'):'')
   },[cookie])
 
-
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);

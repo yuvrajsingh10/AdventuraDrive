@@ -1,75 +1,56 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { register, login, logout } from "../features/userServices";
-
 import { toast } from "react-toastify";
 
 export const AuthContext = React.createContext({
   isLoggedIn: false,
-  user: {},
+  user:null,
   login: () => {},
   logout: () => {},
 });
 
 const initValue = {
-  user: [],
+  user: null,
   isLoggedIn: false,
 };
 
 const userReducer = async (state, action) => {
-  const user = {};
-  if (action.type === "LOGIN_USER") {
-    const userData = await login(action.value);
-    if (userData?.error) {
-      console.log(userData.error);
-    } else {
-      toast.info("User registered successfully");
-      localStorage.setItem("token", userData.data.token);
-      user.isLoggedIn = true;
-    }
-    console.log("this is user", user);
+
+  switch (action.type) {
+    case "LOGIN_USER":
+      const user=action.payload;
+      return { user:action.payload,isLoggedIn:true};
+    case "LOGOUT_USER":
+      return { user: null,isLoggedIn:true };
+    default:
+      console.log('action.payload')
+      return state;
   }
-   else if (action.type === "REGESTER_USER") {
-    const userData = await register(action.value);
-    if (userData?.error) console.log(userData.error);
-    else toast.info("User registered successfully");
-  } 
-  else if (action.type === "LOGOUT_USER") {
-    const {succesMsg,error} = await logout();
-    console.log("logged out",succesMsg)
-    localStorage.removeItem("token");
-    user.isLoggedIn = localStorage.getItem("token") !==null?true:false;
-  }
-  return {
-    isLoggedIn: user.isLoggedIn,
-  };
 };
 
 const AuthProvider = (props) => {
-  const [user, dispatch] = useReducer(userReducer, initValue);
-  const [isUserAlreadyLoggedIn, setIsUserAlreadyLoggedIn] = useState(
-    localStorage.getItem("token") ? true : false
-  );
+  const [state, dispatch] = useReducer(userReducer, initValue);
 
   function loginUser(data) {
-    dispatch({ type: "LOGIN_USER", value: data });
+    dispatch({ type: "LOGIN_USER", payload: data });
   }
   function logoutUser() {
     dispatch({ type: "LOGOUT_USER" });
   }
 
-  async function signInUser(data) {
-    dispatch({ type: "REGESTER_USER", value: data });
-  }
   const userAction = {
-    user: user,
+    user: state.user,
     login: loginUser,
-    signUp: signInUser,
     logout: logoutUser,
-    isLoggedIn: isUserAlreadyLoggedIn,
+    isLoggedIn: state.isLoggedIn,
   };
-  useEffect(() => {
-    setIsUserAlreadyLoggedIn(localStorage.getItem("token") ? true : false);
-  }, [user]);
+  console.log("AuthContext state", state.user);
+  console.log(userAction)
+  useEffect(()=>{
+    const user =JSON.parse(localStorage.getItem('user'));
+    if(user){
+      userAction.login(user);
+    }
+  },[])
   return (
     <AuthContext.Provider value={userAction}>
       {props.children}

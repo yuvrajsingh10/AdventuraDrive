@@ -6,25 +6,23 @@ import { AuthContext } from "../../Context/auth-context";
 import classes from "./header.module.css";
 import AccountMenu from "./AccountMenu";
 import SubHeader from "./SubHeader";
-
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const Header = (props) => {
-  const user_ctx = useContext(AuthContext);
+  const { user } = useAuthContext();
+  
   return (
     <>
       <header className={`container-fluid ${classes["header-section"]} px-0`}>
         <div className="container">
-          <SubHeader/>
+          <SubHeader />
           <nav className={`${classes["menu-bar"]} px-5 `}>
             <div className="navbar navbar-expand-lg navbar-dark ">
               <div className="container-fluid px-5">
                 <h3 className={classes["brand-logo"]}>
                   <IoCarSportSharp /> AdventuraDrive
                 </h3>
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                >
+                <button className="navbar-toggler" type="button">
                   <span className="navbar-toggler-icon"></span>
                 </button>
                 <div
@@ -58,19 +56,22 @@ const Header = (props) => {
                       </NavLink>
                     </li>
                   </ul>
-                  {!user_ctx.isLoggedIn && (
+                  {console.log(user)}
+                  {!user && (
                     <NavLink className="nav-link mx-2" to={"/login"}>
                       Sign In
                     </NavLink>
                   )}
-                  {!user_ctx.isLoggedIn && (
+                  {!user && (
                     <NavLink className="nav-link mx-2" to={"/register"}>
                       <Button title="Sign up" />
                     </NavLink>
                   )}
-                  {user_ctx.isLoggedIn && <AccountMenu username="Yuvraj singh chouhan"//username={user_ctx.user.name} 
-                  />  
-                  }
+                  {user && (
+                    <AccountMenu
+                      username="Yuvraj singh chouhan" //username={user_ctx.user.name}
+                    />
+                  )}
                 </div>
               </div>
             </div>

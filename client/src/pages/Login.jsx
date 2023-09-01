@@ -5,7 +5,9 @@ import Button from "../components/button/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../Context/auth-context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, redirect } from "react-router-dom";
+import { useLogin } from "../hooks/useLogin";
+import { useAuthContext } from "../hooks/useAuthContext";
 const initialValues = {
   email: "",
   password: "",
@@ -18,34 +20,29 @@ const LoginSchema = Yup.object().shape({
     .max(16, "invalid password "),
 });
 const Login = () => {
+
   const navigate = useNavigate();
-  const user_ctx = useContext(AuthContext);
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem("token") ? true : false
-  );
+  const {authLogin,isLoading,error}=useLogin();
+  const user = useAuthContext();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const formik = useFormik({
     initialValues,
     validationSchema: LoginSchema,
-    onSubmit: async (value) => {
-      user_ctx.login(value);
-      setTimeout(() => {
-        window.location.reload()
-        if (user_ctx.isLoggedIn) {
-          setIsAuthenticated(localStorage.getItem("token") ? true : false);
-          navigate('/')
-        }
-      }, 500);
+    onSubmit: async (values) => {
+      await authLogin(values);
+      setTimeout(()=>{
+        navigate('/')
+        redirect('/')
+      },500)
     },
   });
-  if (isAuthenticated){
-    navigate('/')
-  }
 
   useEffect(() => {
-    if (isAuthenticated){
-      navigate('/')
+    const user = JSON.parse(localStorage.getItem('user'));
+    if(user){
+      navigate('/');
     }
-  },[isAuthenticated]);
+  }, []);
 
   return (
     <div className={classes["container-fluid"]}>
@@ -78,7 +75,7 @@ const Login = () => {
             touched={formik.touched.password}
             error={formik.errors.password}
           />
-          <Button type="submit" title="Login" />
+          <Button type="submit" title="Login"  disabled={isLoading}/>
         </form>
       </div>
     </div>

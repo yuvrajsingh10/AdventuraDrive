@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { AuthContext } from "../Context/auth-context";
 import {toast} from 'react-toastify'
+import { useSignup} from "../hooks/useSignup";
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
 
@@ -34,12 +35,12 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Register = () => {
-  const user_ctx = useContext(AuthContext);
+  const {signup,error,isLoading } =useSignup()
   const formik = useFormik({
     initialValues,
     validationSchema: SignupSchema,
-    onSubmit: (values) => {
-      user_ctx.signUp(values);
+    onSubmit: async (values) => {
+      await signup(values);
     },
   });
   return (
