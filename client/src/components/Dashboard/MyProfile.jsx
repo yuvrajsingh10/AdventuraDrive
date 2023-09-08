@@ -25,12 +25,6 @@ const MyProfile = () => {
                 name: "password",
               }}
             />
-            <h6>Language</h6>
-            <p>select your prefered language</p>
-            <select name="language" className={classes.language} id="Language">
-              <option value="">English</option>
-              <option value="">German</option>
-            </select>
           </div>
           <div className="col-md-6 d-flex flex-column ">
             <CustomInput
@@ -49,12 +43,6 @@ const MyProfile = () => {
                 name: "confirmPassword",
               }}
             />
-            <h6>Hour Format</h6>
-            <p>select your prefered language</p>
-            <select name="language" className={classes.language} id="Language">
-              <option value="24">24-Hour</option>
-              <option value="12">12-Hour</option>
-            </select>
           </div>
           <div>
             <Button type="submit" title="Update Profile" />

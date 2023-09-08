@@ -1,16 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { IoCarSportSharp } from "react-icons/io5";
 import { NavLink } from "react-router-dom";
 import Button from "../button/Button";
-import { AuthContext } from "../../Context/auth-context";
 import classes from "./header.module.css";
 import AccountMenu from "./AccountMenu";
 import SubHeader from "./SubHeader";
 import { useAuthContext } from "../../hooks/useAuthContext";
 
 const Header = (props) => {
-  const { user } = useAuthContext();
-  
+  const {user} = useAuthContext();
   return (
     <>
       <header className={`container-fluid ${classes["header-section"]} px-0`}>
@@ -56,7 +54,6 @@ const Header = (props) => {
                       </NavLink>
                     </li>
                   </ul>
-                  {console.log(user)}
                   {!user && (
                     <NavLink className="nav-link mx-2" to={"/login"}>
                       Sign In
@@ -67,9 +64,9 @@ const Header = (props) => {
                       <Button title="Sign up" />
                     </NavLink>
                   )}
-                  {user && (
+                  {user  && (
                     <AccountMenu
-                      username="Yuvraj singh chouhan" //username={user_ctx.user.name}
+                      username={user.name}
                     />
                   )}
                 </div>

@@ -8,12 +8,12 @@ import { CookiesProvider } from "react-cookie";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-  <CookiesProvider>
-    <AuthProvider>
+  <AuthProvider>
+    <CookiesProvider>
       <FavoriteCarProvider>
         <App />
       </FavoriteCarProvider>
-    </AuthProvider>
-  </CookiesProvider>
+    </CookiesProvider>
+  </AuthProvider>
   // </React.StrictMode>
 );

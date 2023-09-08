@@ -11,8 +11,10 @@ import FavoriteCars from "./FavoriteCars";
 import MyProfile from "./MyProfile";
 import MyOrders from "./MyOrders";
 import DashboardImg from "../..//assets/DashboardImg.jpg";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 const MyAccount = () => {
+  const { user } = useAuthContext();
   const initialSelect = {
     dashboard: true,
     myProfile: false,
@@ -50,8 +52,8 @@ const MyAccount = () => {
                 src="https://www.madebydesignesia.com/themes/rentaly/images/profile/1.jpg"
                 alt="Profile"
               />
-              <h5>Monica Lucas </h5>
-              <p>monica@rentaly.com</p>
+              <h5>{user.name}</h5>
+              <p>{user.email}</p>
             </div>
             <div className={`${classes["dashboard-buttons"]}`}>
               <ul>
@@ -86,7 +88,9 @@ const MyAccount = () => {
               </ul>
             </div>
           </div>
-          <div className={`${classes["dashboard-left-pane"]} col-md-9 d-flex flex-column `}>
+          <div
+            className={`${classes["dashboard-left-pane"]} col-md-9 d-flex flex-column `}
+          >
             {selectButton.dashboard && (
               <div className="row text-center">
                 <div className="col-md-3">
@@ -94,11 +98,11 @@ const MyAccount = () => {
                   <h2>03</h2>
                   <p>Upcomming Orders</p>
                 </div>
-                <div className="col-md-3">
+                {/* <div className="col-md-3">
                   <ImPriceTags />
                   <h2>12</h2>
                   <p>Coupons</p>
-                </div>
+                </div> */}
                 <div className="col-md-3">
                   <SlCalender />
                   <h2>58</h2>
@@ -124,7 +128,7 @@ const MyAccount = () => {
               </>
             )}
             {selectButton.myProfile && <MyProfile />}
-            {selectButton.myOrders && <MyOrders/>}
+            {selectButton.myOrders && <MyOrders />}
           </div>
         </div>
       </div>

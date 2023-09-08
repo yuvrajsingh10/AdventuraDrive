@@ -4,10 +4,10 @@ import classes from "./Login.module.css";
 import Button from "../components/button/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { AuthContext } from "../Context/auth-context";
-import { useNavigate, redirect } from "react-router-dom";
+import { useNavigate, redirect,NavLink } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import { useAuthContext } from "../hooks/useAuthContext";
+
 const initialValues = {
   email: "",
   password: "",
@@ -24,7 +24,6 @@ const Login = () => {
   const navigate = useNavigate();
   const {authLogin,isLoading,error}=useLogin();
   const user = useAuthContext();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const formik = useFormik({
     initialValues,
     validationSchema: LoginSchema,
@@ -75,15 +74,15 @@ const Login = () => {
             touched={formik.touched.password}
             error={formik.errors.password}
           />
+          <NavLink className="link mx-2" to={"/my-account"}>
+            Forget Password
+          </NavLink>
           <Button type="submit" title="Login"  disabled={isLoading}/>
         </form>
+        <p></p>
       </div>
     </div>
   );
 };
 
 export default Login;
-
-//Employed advanced data visualization techniques to transform complex information into intuitive visuals,
-//enhancing user understanding and engagement;
-//contributed to a 40% increase in user retention during the Front-End Development Internship at Robotronix India.

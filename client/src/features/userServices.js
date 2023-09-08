@@ -37,7 +37,8 @@ const loginUser = async (data) => {
 };
 const logoutUser = async () => {
   try {
-    const response = await axios.put(`${base_url}/user/logout`, {}, config);
+    const response = await axios.put(`${base_url}/user/logout`,{},config);
+    console.log(response) 
     console.log("this is resonse");
     console.log("user is succesfully logged out");
     return {
@@ -50,7 +51,7 @@ const logoutUser = async () => {
     }
     return {
       error: "Error in logging out",
-      succesMsg: null,
+      successMsg: null,
     };
   }
 };

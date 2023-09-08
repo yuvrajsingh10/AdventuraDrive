@@ -11,20 +11,30 @@ import About from "./components/About/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import MyAccount from "./components/Dashboard/MyAccount";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { useCookies } from "react-cookie";
-import { AuthContext } from "./Context/auth-context";
-// import Payment from "./pages/Payment";
+import { useVehicle } from "./hooks/useVehicle";
+import { useVehicleContext } from "./hooks/useVehicleContext";
 
 function App() {
-  const user_ctx = useContext(AuthContext);
+  const { getVehicles } = useVehicle();
+  const {vehicles} = useVehicleContext();
   const [isLoading, setIsLoading] = useState(true);
+  const [cookie, setCookie] = useCookies(["refreshToken"]);
+  
+  
+  // useEffect(()=>{
+  //   getVehicles()
+  // },[vehicles])
 
-  const [cookie,setCookie]= useCookies(['refreshToken'])
-  useEffect(()=>{
-    setCookie('refreshToken',localStorage.getItem('token')?localStorage.getItem('token'):'')
-  },[cookie])
+  
+  useEffect(() => {
+    setCookie(
+      "refreshToken",
+      localStorage.getItem("token") ? localStorage.getItem("token") : ""
+    );
+  }, [cookie]);
 
   useEffect(() => {
     setTimeout(() => {

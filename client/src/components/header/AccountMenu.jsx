@@ -7,12 +7,12 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
-import { useLogout } from "../../hooks/useLogout";
+import { useLogin } from "../../hooks/useLogin";
 
 export default function AccountMenu(props) {
-  const navigate=useNavigate()
-  
-  const {authLogout,isLoading,error}=useLogout()
+  const navigate = useNavigate();
+
+  const { authLogout, isLoading, error } = useLogin();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -22,11 +22,11 @@ export default function AccountMenu(props) {
     setAnchorEl(null);
   };
   const logout = async () => {
-    authLogout()
+    authLogout();
     // window.location.reload();
-    setTimeout(()=>{
-      navigate('/login')
-    },500)
+    // setTimeout(()=>{
+    //   navigate('/login')
+    // },500)
   };
   return (
     <React.Fragment>

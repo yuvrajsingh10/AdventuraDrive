@@ -5,9 +5,7 @@ import CustomInput from "../components/customInput/CustomInput";
 import Button from "../components/button/Button";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { AuthContext } from "../Context/auth-context";
-import {toast} from 'react-toastify'
-import { useSignup} from "../hooks/useSignup";
+import { useLogin } from "../hooks/useLogin";
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
 
@@ -35,7 +33,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 const Register = () => {
-  const {signup,error,isLoading } =useSignup()
+  const { signup, error, isLoading } = useLogin();
   const formik = useFormik({
     initialValues,
     validationSchema: SignupSchema,
@@ -66,8 +64,8 @@ const Register = () => {
                     type: "text",
                     id: "name",
                     name: "name",
-                    onChange: formik.handleChange('name'),
-                    onBlur:formik.handleBlur('name'),
+                    onChange: formik.handleChange("name"),
+                    onBlur: formik.handleBlur("name"),
                     value: formik.values.name,
                   }}
                   touched={formik.touched.name}
@@ -79,8 +77,8 @@ const Register = () => {
                     type: "email",
                     id: "email",
                     name: "email",
-                    onChange: formik.handleChange('email'),
-                    onBlur:formik.handleBlur('email'),
+                    onChange: formik.handleChange("email"),
+                    onBlur: formik.handleBlur("email"),
                     value: formik.values.email,
                   }}
                   touched={formik.touched.email}
@@ -92,8 +90,8 @@ const Register = () => {
                     type: "password",
                     id: "password",
                     name: "password",
-                    onChange: formik.handleChange('password'),
-                    onBlur:formik.handleBlur('password'),
+                    onChange: formik.handleChange("password"),
+                    onBlur: formik.handleBlur("password"),
                     value: formik.values.password,
                   }}
                   touched={formik.touched.password}
@@ -107,8 +105,8 @@ const Register = () => {
                     id: "age",
                     type: "text",
                     name: "age",
-                    onChange: formik.handleChange('age'),
-                    onBlur:formik.handleBlur('age'),
+                    onChange: formik.handleChange("age"),
+                    onBlur: formik.handleBlur("age"),
                     value: formik.values.age,
                   }}
                   touched={formik.touched.age}
@@ -120,8 +118,8 @@ const Register = () => {
                     id: "phone",
                     type: "number",
                     name: "phone",
-                    onChange: formik.handleChange('phone'),
-                    onBlur:formik.handleBlur('phone'),
+                    onChange: formik.handleChange("phone"),
+                    onBlur: formik.handleBlur("phone"),
                     value: formik.values.phone,
                   }}
                   touched={formik.touched.phone}
@@ -133,8 +131,8 @@ const Register = () => {
                     name: "confirmPassword",
                     type: "password",
                     id: "confirmPassword",
-                    onChange: formik.handleChange('confirmPassword'),
-                    onBlur:formik.handleBlur('confirmPassword'),
+                    onChange: formik.handleChange("confirmPassword"),
+                    onBlur: formik.handleBlur("confirmPassword"),
                     value: formik.values.confirmPassword,
                   }}
                   touched={formik.touched.confirmPassword}

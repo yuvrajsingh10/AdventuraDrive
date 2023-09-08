@@ -1,5 +1,5 @@
-const getTokenFromLocalstorage = localStorage.getItem("token")
-  ? localStorage.getItem("token")
+const getTokenFromLocalstorage = localStorage.getItem("user")
+  ? localStorage.getItem("user")
   : null;
 export const config = {
   withCredentials: true,

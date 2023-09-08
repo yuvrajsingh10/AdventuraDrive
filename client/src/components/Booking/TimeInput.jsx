@@ -4,7 +4,7 @@ const TimeInput = (props) => {
   return (
     <>
       <select name={props.name} onChange={props.onChange} className={`${props.className} ${classes.timeSelect}`}   id={props.id}>
-        <option selected disabled value="Select time">{props.label}</option>
+        <option  disabled defaultValue value="Select time">{props.label}</option>
         <option value="00:00">00:00</option>
         <option value="00:30">00:30</option>
         <option value="01:00">01:00</option>

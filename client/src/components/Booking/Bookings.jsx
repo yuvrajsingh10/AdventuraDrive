@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import classes from "./bookings.module.css";
 import Wrapper from "../../UI/Wrapper";
-import CustomInput from "../../components/customInput/CustomInput";
-import Button from "../../components/button/Button";
+import CustomInput from "../customInput/CustomInput";
+import Button from "../button/Button";
 import TimeInput from "./TimeInput";
 import FeatureCard from "../../UI/FeatureCard";
 import { FiCalendar } from "react-icons/fi";
@@ -14,11 +14,13 @@ import sportscar from "../../assets/sportscar.png";
 import van from "../../assets/van.png";
 import car from "../../assets/car.png";
 import bookingFeatured from "../../assets/bookingFeatured.jpg";
-import OfferValue from "../../components/OfferValue/OfferValue";
+import OfferValue from "../OfferValue/OfferValue";
 import SubheaderWrapper from "../../UI/SubheaderWrapper";
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
 const Bookings = () => {
+  const [isCheckBookingVehicleArea, setIsCheckBookingVehicleArea] =
+    useState(false);
   const [bookingDetails, setBookingDetails] = useState({
     vehicleType: "Car",
     pickUpLocation: "",
@@ -42,11 +44,8 @@ const Bookings = () => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
+    console.log(bookingDetails)
   };
-
-  function fetch() {
-    
-  }
 
   useEffect(() => {
     const timeout = setTimeout(() => {}, 500);
@@ -54,11 +53,14 @@ const Bookings = () => {
       clearInterval(timeout);
     };
   }, []);
-  
+
   return (
     <>
       <SubheaderWrapper heading={"Booking"} img={img}>
-        <Wrapper className={`container ${classes["booking-section"]} px-5 py-4`}>
+        {/* From for check the availability of the  vehicle */}
+        <Wrapper
+          className={`container ${classes["booking-section"]} px-5 py-4`}
+        >
           <form onSubmit={submitHandler}>
             <div className="row">
               <div className="col-md-6">
@@ -187,6 +189,13 @@ const Bookings = () => {
           </form>
         </Wrapper>
       </SubheaderWrapper>
+
+      {isCheckBookingVehicleArea && (
+        <div className="container">
+          
+        </div>
+      )}
+
       <div className={classes["space-single"]}></div>
       <section>
         <div className="container">
