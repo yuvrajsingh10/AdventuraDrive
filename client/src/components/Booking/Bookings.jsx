@@ -16,11 +16,13 @@ import car from "../../assets/car.png";
 import bookingFeatured from "../../assets/bookingFeatured.jpg";
 import OfferValue from "../OfferValue/OfferValue";
 import SubheaderWrapper from "../../UI/SubheaderWrapper";
+import { useVehicle } from "../../hooks/useVehicle";
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
 const Bookings = () => {
-  const [isCheckBookingVehicleArea, setIsCheckBookingVehicleArea] =
-    useState(false);
+
+  const {checkAvailabilityVehicle}=useVehicle();
+  const [isCheckBookingVehicleArea, setIsCheckBookingVehicleArea] =useState(false);
   const [bookingDetails, setBookingDetails] = useState({
     vehicleType: "Car",
     pickUpLocation: "",
@@ -44,7 +46,8 @@ const Bookings = () => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    console.log(bookingDetails)
+    await checkAvailabilityVehicle(bookingDetails)
+    
   };
 
   useEffect(() => {
@@ -61,7 +64,7 @@ const Bookings = () => {
         <Wrapper
           className={`container ${classes["booking-section"]} px-5 py-4`}
         >
-          <form onSubmit={submitHandler}>
+          <form method="POST" onSubmit={submitHandler}>
             <div className="row">
               <div className="col-md-6">
                 <h6>What is your vehicle type?</h6>

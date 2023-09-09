@@ -18,8 +18,7 @@ import { useVehicle } from "./hooks/useVehicle";
 import { useVehicleContext } from "./hooks/useVehicleContext";
 
 function App() {
-  const { getVehicles } = useVehicle();
-  const {vehicles} = useVehicleContext();
+
   const [isLoading, setIsLoading] = useState(true);
   const [cookie, setCookie] = useCookies(["refreshToken"]);
   
