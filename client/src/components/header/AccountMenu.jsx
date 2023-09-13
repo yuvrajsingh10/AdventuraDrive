@@ -8,6 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useLogin } from "../../hooks/useLogin";
+import { useCookies } from "react-cookie";
 
 export default function AccountMenu(props) {
   const navigate = useNavigate();
@@ -23,10 +24,6 @@ export default function AccountMenu(props) {
   };
   const logout = async () => {
     authLogout();
-    // window.location.reload();
-    // setTimeout(()=>{
-    //   navigate('/login')
-    // },500)
   };
   return (
     <React.Fragment>

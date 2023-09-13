@@ -9,7 +9,7 @@
     left: 50%;
     transform: translate(-50%);
     margin: 0 auto;
-    height: 17.5rem;
+    height: 19rem;
 }
 
 .selectCar-Form {
@@ -126,6 +126,17 @@ input {
 }
 
 
+/* ============================= */
+
+.vehicle-available{
+    height: fit-content;
+    /* background-color: #5b60b8; */
+    margin-top: 264px;
+    margin-bottom: 100px;
+}
+.vehicle-available div{
+    transition: .3s linear;
+}
 /* ================================================= WHAT WE OFFER CONTAINER ============================== */
 
 .offer-container {

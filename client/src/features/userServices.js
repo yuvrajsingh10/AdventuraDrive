@@ -3,10 +3,10 @@ import { base_url } from "../utils/base_url";
 import { config } from "../utils/axiosConfig";
 
 const registerUser = async (data) => {
-  const response = {error:null,data:null};
+  const response = { error: null, data: null };
   try {
     response.data = await axios.post(`${base_url}/user/register`, data, config);
-    return {error:response.error ,data:response.data.data}
+    return { error: response.error, data: response.data.data };
   } catch (error) {
     if (error.response.status === 409) {
       response.error = "User with this email already exists.";
@@ -20,10 +20,10 @@ const registerUser = async (data) => {
 };
 
 const loginUser = async (data) => {
-  const response = {error:null,data:null};
+  const response = { error: null, data: null };
   try {
     response.data = await axios.post(`${base_url}/user/login`, data, config);
-    return {error:response.error ,data:response.data.data}
+    return { error: response.error, data: response.data.data };
   } catch (error) {
     if (error.response.status === 409) {
       response.error = "User with this email already exists.";
@@ -37,10 +37,7 @@ const loginUser = async (data) => {
 };
 const logoutUser = async () => {
   try {
-    const response = await axios.put(`${base_url}/user/logout`,{},config);
-    console.log(response) 
-    console.log("this is resonse");
-    console.log("user is succesfully logged out");
+    const response = await axios.put(`${base_url}/user/logout`, {}, config);
     return {
       successMsg: "User logged Out Successfully",
       error: null,
@@ -56,4 +53,22 @@ const logoutUser = async () => {
   }
 };
 
-export { registerUser, loginUser, logoutUser };
+const forgetUserPassword = async (data) => {
+  console.log(data)
+  try {
+    const response = await axios.post(`${base_url}/user/forget-password`, data);
+    return {
+      successMsg: "User logged Out Successfully",
+      error: null,
+    };
+  } catch (error) {
+    if (error.response.status === 404) {
+      return {
+        error: "error 5454",
+        successMsg: null,
+      };
+    }
+  }
+};
+
+export { registerUser, loginUser, logoutUser, forgetUserPassword };

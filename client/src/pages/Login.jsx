@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { useNavigate, redirect,NavLink } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 import { useAuthContext } from "../hooks/useAuthContext";
+import { useCookies } from "react-cookie";
 
 const initialValues = {
   email: "",
@@ -20,7 +21,7 @@ const LoginSchema = Yup.object().shape({
     .max(16, "invalid password "),
 });
 const Login = () => {
-
+  const [cookie,setCookie]=useCookies('user');
   const navigate = useNavigate();
   const {authLogin,isLoading,error}=useLogin();
   const user = useAuthContext();
@@ -37,7 +38,7 @@ const Login = () => {
   });
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = cookie?.user;
     if(user){
       navigate('/');
     }
@@ -74,7 +75,7 @@ const Login = () => {
             touched={formik.touched.password}
             error={formik.errors.password}
           />
-          <NavLink className="link mx-2" to={"/my-account"}>
+          <NavLink className={`${classes['forget-Password-link']} mx-2`} to={"/forget-password"}>
             Forget Password
           </NavLink>
           <Button type="submit" title="Login"  disabled={isLoading}/>

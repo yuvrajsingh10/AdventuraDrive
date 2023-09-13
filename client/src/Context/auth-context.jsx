@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useReducer, useState } from "react";
+import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 
 export const AuthContext = React.createContext({
@@ -16,10 +17,10 @@ const initValue = {
 const userReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_USER":
-      return {user: action.payload, isLoggedIn: true };
+      return { user: action.payload, isLoggedIn: true };
       break;
     case "LOGOUT_USER":
-      return { user:null ,isLoggedIn:false}
+      return { user: null, isLoggedIn: false };
       break;
     default:
       console.log("action.payload");
@@ -29,7 +30,8 @@ const userReducer = (state, action) => {
 };
 
 const AuthProvider = (props) => {
-  const [state, dispatch] = useReducer(userReducer,initValue );
+  const [state, dispatch] = useReducer(userReducer, initValue);
+  const [cookie, setCookie] = useCookies(["user"]);
 
   function loginUser(data) {
     dispatch({ type: "LOGIN_USER", payload: data });
@@ -44,15 +46,13 @@ const AuthProvider = (props) => {
     logout: logoutUser,
     isLoggedIn: state.isLoggedIn,
   };
-
+  
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (user) {
-      dispatch({ type: "LOGIN_USER", payload: user });
+    if(cookie?.user){
+      dispatch({ type: "LOGIN_USER", payload: cookie.user });
     }
   }, []);
-  
-  
+
   return (
     <AuthContext.Provider value={userAction}>
       {props.children}

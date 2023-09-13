@@ -14,26 +14,29 @@ import MyAccount from "./components/Dashboard/MyAccount";
 import { useEffect, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { useCookies } from "react-cookie";
-import { useVehicle } from "./hooks/useVehicle";
-import { useVehicleContext } from "./hooks/useVehicleContext";
-
+import PrivateRoute from "./routes/PrivateRoute";
+import { useAuthContext } from "./hooks/useAuthContext";
+import Loader from "./components/loader";
+import FrogetPassword from "./components/ForgotPassword/FrogetPassword";
+import ResetPassword from "./components/ForgotPassword/ResetPassword";
 function App() {
-
   const [isLoading, setIsLoading] = useState(true);
   const [cookie, setCookie] = useCookies(["refreshToken"]);
-  
-  
-  // useEffect(()=>{
-  //   getVehicles()
-  // },[vehicles])
+  //const [userCookie, setUserCookie] = useCookies(["user"]);
+  const { isLoggedIn } = useAuthContext();
 
-  
-  useEffect(() => {
-    setCookie(
-      "refreshToken",
-      localStorage.getItem("token") ? localStorage.getItem("token") : ""
-    );
-  }, [cookie]);
+  // useEffect(() => {
+    // setCookie(
+    //   "refreshToken",
+    //   localStorage.getItem("token") ? localStorage.getItem("token") : "",
+    //   [{ expires: 360000 + Date.now(), secure: true }]
+    // );
+    // setUserCookie(
+    //   "user",
+    //   localStorage.getItem("user") ? localStorage.getItem("user") : "",
+    //   [{ expires: 360000 + Date.now(), secure: true }]
+    // );
+  // }, [cookie]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -43,13 +46,7 @@ function App() {
 
   return (
     <>
-      {isLoading && (
-        <>
-          <div className="container w-50 h-50 mx-auto text-center">
-            <h3>loading...</h3>
-          </div>
-        </>
-      )}
+      {isLoading && <Loader />}
       {!isLoading && (
         <Router>
           <Header />
@@ -60,7 +57,16 @@ function App() {
             <Route path="/bookings" element={<Bookings />}></Route>
             <Route path="/Login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
-            <Route path="/my-account" element={<MyAccount />}></Route>
+            <Route path='/forget-password' element={<FrogetPassword/>}></Route>
+            <Route path='/reset-password' element={<ResetPassword/>}></Route>
+            <Route
+              path="/my-account"
+              element={
+                <PrivateRoute path="/my-account" auth={isLoggedIn}>
+                  <MyAccount />
+                </PrivateRoute>
+              }
+            ></Route>
           </Routes>
           <Footer />
           <ToastContainer
@@ -71,7 +77,6 @@ function App() {
             rtl={false}
             pauseOnFocusLoss
             draggable
-            pauseOnHover
             theme="light"
           />
         </Router>

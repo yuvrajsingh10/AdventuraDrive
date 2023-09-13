@@ -17,13 +17,13 @@ import bookingFeatured from "../../assets/bookingFeatured.jpg";
 import OfferValue from "../OfferValue/OfferValue";
 import SubheaderWrapper from "../../UI/SubheaderWrapper";
 import { useVehicle } from "../../hooks/useVehicle";
+import { useVehicleContext } from "../../hooks/useVehicleContext";
+import Card from "../card/Card";
+import Loader from "../loader";
 const img =
   "https://www.madebydesignesia.com/themes/rentaly/images/background/subheader.jpg";
-const Bookings = () => {
 
-  const {checkAvailabilityVehicle}=useVehicle();
-  const [isCheckBookingVehicleArea, setIsCheckBookingVehicleArea] =useState(false);
-  const [bookingDetails, setBookingDetails] = useState({
+  const initValues={
     vehicleType: "Car",
     pickUpLocation: "",
     dropLocation: "",
@@ -31,7 +31,13 @@ const Bookings = () => {
     returnDate: "",
     pickUpTime: "",
     returnTime: "",
-  });
+  }
+const Bookings = () => {
+  const { checkAvailabilityVehicle, isLoading, isError } = useVehicle();
+  const { availableVehicles} = useVehicleContext();
+  const [isCheckBookingVehicleArea, setIsCheckBookingVehicleArea] =
+    useState(false);
+  const [bookingDetails, setBookingDetails] = useState(initValues);
 
   const changeHandler = (event) => {
     setBookingDetails((prevState) => {
@@ -46,10 +52,14 @@ const Bookings = () => {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    await checkAvailabilityVehicle(bookingDetails)
-    
+    await checkAvailabilityVehicle(bookingDetails);
+    setBookingDetails(initValues)
   };
 
+  useEffect(() => {
+    console.log(availableVehicles);
+    if (availableVehicles) setIsCheckBookingVehicleArea(true);
+  }, [availableVehicles]);
   useEffect(() => {
     const timeout = setTimeout(() => {}, 500);
     return () => {
@@ -138,6 +148,7 @@ const Bookings = () => {
                         name: "pickUpLocation",
                         type: "text",
                         onChange: pickUpHandler,
+                        value:bookingDetails.pickUpLocation
                       }}
                     />
                     <CustomInput
@@ -147,6 +158,7 @@ const Bookings = () => {
                         name: "pickUpDate",
                         type: "Date",
                         onChange: pickUpHandler,
+                        value:bookingDetails.pickUpDate
                       }}
                     />
                     <TimeInput
@@ -165,6 +177,7 @@ const Bookings = () => {
                         name: "dropLocation",
                         type: "text",
                         onChange: pickUpHandler,
+                        value:bookingDetails.dropLocation
                       }}
                     />
                     <CustomInput
@@ -174,6 +187,7 @@ const Bookings = () => {
                         name: "returnDate",
                         type: "Date",
                         onChange: pickUpHandler,
+                        value:bookingDetails.returnDate
                       }}
                     />
                     <TimeInput
@@ -192,16 +206,35 @@ const Bookings = () => {
           </form>
         </Wrapper>
       </SubheaderWrapper>
-
-      {isCheckBookingVehicleArea && (
-        <div className="container">
-          
+      {isLoading && <Loader />}
+      
+      {!isLoading && availableVehicles && (
+        <div
+          className={`container ${classes["vehicle-available"]} d-flex justify-content-center align-items-center `}
+        >
+          <div className="row">
+            {availableVehicles.length===0 &&   <h4>No vehicle Availabe</h4>}
+            {availableVehicles?.map((vehicle) => (
+              <Card
+                key={vehicle?._id}
+                car={vehicle}
+                i_class={"card m-2 "}
+              />
+            ))}
+            {availableVehicles?.map((vehicle) => (
+              <Card
+                key={vehicle?._id}
+                car={vehicle}
+                i_class={"card m-2 "}
+              />
+            ))}
+          </div>
         </div>
       )}
 
-      <div className={classes["space-single"]}></div>
+      {!availableVehicles && <div className={classes["space-single"]}></div>}
       <section>
-        <div className="container">
+        <div className="container my-3">
           <div className="row justify-content-evenly">
             <FeatureCard
               icon={<AiFillCar />}

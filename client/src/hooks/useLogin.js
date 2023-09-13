@@ -1,12 +1,19 @@
 import { useAuthContext } from "./useAuthContext";
 import { useState } from "react";
-import { loginUser, logoutUser } from "../features/userServices";
+import {
+  loginUser,
+  logoutUser,
+  forgetUserPassword,
+  registerUser,
+} from "../features/userServices";
+import { useCookies } from "react-cookie";
 
 //custom hook for login functionality
 export const useLogin = () => {
   const [isLoading, setIsLoading] = useState(null);
   const [error, setError] = useState(null);
   const { login, logout } = useAuthContext();
+  const [cookie, setCookie, removeCookie] = useCookies("user");
 
   // login user function
   const authLogin = async (userData) => {
@@ -20,9 +27,10 @@ export const useLogin = () => {
     }
     if (response.data) {
       // storing data to local storage and cookies;
-      localStorage.setItem("user", JSON.stringify(response.data));
-      const refreshToken = JSON.parse(localStorage.getItem("user"));
       const token = localStorage.setItem("token", response.data.token);
+      setCookie("user", response.data, [
+        { expires: 360000 + Date.now(), secure: true },
+      ]);
 
       //update auht context after login
       login(response.data);
@@ -60,10 +68,27 @@ export const useLogin = () => {
       // deleting data from localStorage  and cookies;
       localStorage.removeItem("user");
       localStorage.removeItem("token");
+      removeCookie("user", [{ path: "/", secure: true }]);
       logout();
       setIsLoading(false);
     }
   };
 
-  return { authLogin, isLoading, error, signup, authLogout };
+  // Froget Password Functionality send the email to the user
+  const forgetPassword = async (data) => {
+    setIsLoading(true);
+    setError(null);
+
+    const response = await forgetUserPassword(data);
+    if (response.error) {
+      setIsLoading(false);
+      setError(response.error);
+    }
+    if (response.data) {
+      setIsLoading(false);
+      setError(null);
+    }
+  };
+
+  return { authLogin, isLoading, error, signup, authLogout, forgetPassword };
 };

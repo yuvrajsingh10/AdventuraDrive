@@ -17,8 +17,10 @@ export const useVehicle = () => {
       setError(response.error);
     }
     if (response.data) {
-      localStorage.setItem("vehicles", JSON.stringify(response.data));
-      getAllVehicles();
+      // localStorage.setItem("vehicles", JSON.stringify(response.data));
+      getAllVehicles(response.data);
+      setIsLoading(false);
+      setError(null)
     }
   };
 
@@ -48,7 +50,7 @@ export const useVehicle = () => {
       setError(response.error);
     }
     if (response) {
-      checkAvailableVehicles(data);
+      checkAvailableVehicles(response.data);
       setIsLoading(false);
       setError(null);
     }

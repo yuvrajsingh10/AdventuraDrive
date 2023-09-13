@@ -19,7 +19,9 @@ import picBlog3 from "../../assets/pic-blog-3.jpg";
 import HeroInfo from "./HeroInfo";
 import Heading from "../Heading/Heading";
 
+
 const Home = () => {
+
   
   return (
     <>

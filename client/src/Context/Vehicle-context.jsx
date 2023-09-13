@@ -9,12 +9,13 @@ export const VehicleContext = React.createContext({
 
 const inititalValues = {
   vehicles: [],
+  availableVehicles:null
 };
 
 const vehicleReducer = (state, action) => {
   switch (action.type) {
     case "CHECK_AVAILABLE_VEHICLES":
-      return {...state, ehicles:action.payload};
+      return {...state, availableVehicles:action.payload};
     case "BOOK_VEHICLES":
       return "VEHICLES BOOKED SUCCESSFULLY";
     case "GET_VEHICLES":
@@ -27,8 +28,8 @@ const vehicleReducer = (state, action) => {
 const VehicleProvider = ({ children }) => {
   const [state, dispatch] = useReducer(vehicleReducer, inititalValues);
 
-  const checkAvailableVehicles = () => {
-    dispatch({ type: "CHECK_AVAILABLE_VEHICLES" });
+  const checkAvailableVehicles = (data) => {
+    dispatch({ type: "CHECK_AVAILABLE_VEHICLES",payload:data });
   };
   const bookVehicle = (data) => {
     dispatch({ type: "BOOK_VEHICLE", payload: data });
@@ -38,18 +39,13 @@ const VehicleProvider = ({ children }) => {
   };
 
   const vehicles = {
-    vehicles: [...state.vehicles],
+    vehicles: state?.vehicles,
+    availableVehicles:state?.availableVehicles,
     bookVehicle:bookVehicle,
     checkAvailableVehicles:checkAvailableVehicles,
     getAllVehicles:getAllVehicles,
   };
-console.log(state)
-  useEffect(()=>{
-    const vehicleData = JSON.parse(localStorage.getItem('vehicles'))
-    if(vehicleData){
-      dispatch({ type: "GET_VEHICLES",payload:vehicleData });
-    }
-  },[])
+
   return (
     <VehicleContext.Provider value={vehicles}>
       {children}
